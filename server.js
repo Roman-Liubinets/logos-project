@@ -36,6 +36,16 @@ app.get('/goods', function (req, res) {
     });
 });
 
+//Змінити товар
+app.post('/goods-change', function (req, res) {
+    connection.query('UPDATE goods SET name = ?, price = ? WHERE id = ?', [req.body.name, req.body.price, req.body.id],
+        function (err) {
+            if (err) throw err;
+        }
+    );
+    res.sendStatus(200);
+});
+
 // регистрація акаунту
 app.post('/login-reg', function(req, res) {
     connection.query('INSERT INTO users SET ?', req.body, function(err, result) {

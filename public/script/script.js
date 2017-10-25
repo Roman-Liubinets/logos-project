@@ -22,8 +22,9 @@ app.controller('myCtrl', function($scope, $http, ngDialog) {
         }, function errorCallback(response) {
             console.log("Error!!!" + response.err);
         });
+
     //Змінити товар
-    $scope.changeGoods = function() {
+    $scope.changeGoods = function(index, name, price) {
         ngDialog.open({
                 template: '/template/changeItem.html',
                 scope: $scope,
@@ -238,8 +239,6 @@ app.directive("bodyBlock", function() {
                     });
 
             }
-            //Змінна товару
-
             //Регистрація
             $scope.registerAcc = function() {
                 let loginObj = {
