@@ -22,8 +22,14 @@ app.controller('myCtrl', function($scope, $http, ngDialog) {
         }, function errorCallback(response) {
             console.log("Error!!!" + response.err);
         });
-    //Додати товар
-
+    //Змінити товар
+    $scope.changeGoods = function() {
+        ngDialog.open({
+            template: '/template/changeItem.html',
+            scope: $scope,
+            controller: function ($scope) {}
+        })
+    }
 })
 //Директива Меню
 app.directive("headerBlock", function() {
