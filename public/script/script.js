@@ -25,12 +25,38 @@ app.controller('myCtrl', function($scope, $http, ngDialog) {
     //Змінити товар
     $scope.changeGoods = function() {
         ngDialog.open({
-            template: '/template/changeItem.html',
-            scope: $scope,
-            controller: function ($scope) {}
-        })
+                template: '/template/changeItem.html',
+                scope: $scope,
+                controller: function($scope) {
+                    $scope.indexEditedItem = index;
+                    $scope.editNameItem = name;
+                    $scope.editPpriceItem = price;
+                    $scope.edititem = function() {
+                        let goodsObj = {
+                            name: $scope.editNameItem,
+                            price: $scope.editPpriceItem,
+                            id: $scope.indexEditedItem
+                        };
+                        $http.post('http://localhost:8000/goods-change', goodsObj)
+                            .then(function successCallback(response) {
+                                    ngDialog.closeAll();
+                                },
+                                function errorCallback(response) {
+                                    console.log("Error!!!" + response.err);
+                                });
+                    };
+                }
+            })
+            .closePromise.then(function(res) {
+                $http.get('http://localhost:8000/goods')
+                    .then(function successCallback(response) {
+                        $scope.items = response.data;
+                    }, function errorCallback(response) {
+                        console.log("Error!!!" + response.err);
+                    });
+            });
     }
-})
+});
 //Директива Меню
 app.directive("headerBlock", function() {
     return {
@@ -350,122 +376,3 @@ app.directive("bodyBlock", function() {
         }
     }
 })
-
-// app.directive("sliderBlock", function() {
-//     return {
-//         replace: true,
-//         templateUrl: "template/slider.html",
-//         controller: function($scope) {
-//             var slideNow = 1;
-//             var translateWidth = 0;
-//             var slideCount = $('#slidewrapper').children().length;
-//
-//             function nextSlide() {
-//                 if (slideNow == 2) {
-//                     $("#slidewrapper li:nth-child(3)").css({
-//                         "display": "inline"
-//                     })
-//                 } else if (slideNow == 3) {
-//                     $("#slidewrapper li:nth-child(4)").css({
-//                         "display": "inline"
-//                     })
-//                 }
-//                 if (slideNow == slideCount || slideNow <= 0 || slideNow > slideCount) {
-//                     $("#slidewrapper").css('transform', 'translate(0, 0)');
-//                     slideNow = 1;
-//                 } else {
-//                     translateWidth = -$('#viewport').width() * (slideNow);
-//                     $('#slidewrapper').css({
-//                         'transform': 'translate(' + translateWidth + 'px, 0)',
-//                         '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
-//                         '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
-//                     });
-//                     slideNow++;
-//                 }
-//             }
-//
-//             var slideInterval = 2000;
-//
-//             // $(document).ready(function() {
-//             //     var switchInterval = setInterval(nextSlide, slideInterval);
-//             //
-//             //     $('#viewport').hover(function() {
-//             //         clearInterval(switchInterval);
-//             //     }, function() {
-//             //         switchInterval = setInterval(nextSlide, slideInterval);
-//             //     });
-//             // });
-//
-//             function prevSlide() {
-//                 if (slideNow == 1) {
-//                     $("#slidewrapper li:nth-child(4)").css({
-//                         "display": "inline"
-//                     })
-//                 } else if (slideNow == 4) {
-//                     $("#slidewrapper li:nth-child(3)").css({
-//                         "display": "inline"
-//                     })
-//                 }
-//
-//                 if (slideNow == 1 || slideNow <= 0 || slideNow > slideCount) {
-//                     translateWidth = -$('#viewport').width() * (slideCount - 1);
-//                     $('#slidewrapper').css({
-//                         'transform': 'translate(' + translateWidth + 'px, 0)',
-//                         '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
-//                         '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
-//                     });
-//                     slideNow = slideCount;
-//                 } else {
-//                     translateWidth = -$('#viewport').width() * (slideNow - 2);
-//                     $('#slidewrapper').css({
-//                         'transform': 'translate(' + translateWidth + 'px, 0)',
-//                         '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
-//                         '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
-//                     });
-//                     slideNow--;
-//                 }
-//             }
-//
-//             $('#next-btn').click(function() {
-//                 nextSlide();
-//             });
-//
-//             $('#prev-btn').click(function() {
-//                 prevSlide();
-//             });
-//
-//             var navBtnId = 0;
-//
-//             $('.slide-nav-btn').click(function() {
-//                 navBtnId = $(this).index();
-//                 if (this) {
-//                     $("#slidewrapper li:nth-child(3)").css({
-//                         "display": "inline"
-//                     })
-//                     $("#slidewrapper li:nth-child(4)").css({
-//                         "display": "inline"
-//                     })
-//                 }
-//
-//                 if (navBtnId + 1 != slideNow) {
-//                     translateWidth = -$('#viewport').width() * (navBtnId);
-//                     $('#slidewrapper').css({
-//                         'transform': 'translate(' + translateWidth + 'px, 0)',
-//                         '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
-//                         '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
-//                     });
-//                     slideNow = navBtnId + 1;
-//                 }
-//             });
-
-// }
-
-
-
-
-
-
-
-
-// }
-// })
