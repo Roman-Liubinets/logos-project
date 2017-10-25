@@ -23,6 +23,16 @@ app.controller('myCtrl', function($scope, $http, ngDialog) {
             console.log("Error!!!" + response.err);
         });
 
+    $scope.messages = [];
+
+    $http.get('http://localhost:8000/chat')
+        .then(function successCallback(response) {
+            $scope.messages = response.data;
+        }, function errorCallback(response) {
+            console.log("Error!!!" + response.err);
+        });
+
+
     //Змінити товар
     $scope.changeGoods = function(index, name, price) {
         ngDialog.open({
@@ -172,7 +182,7 @@ app.directive("bodyBlock", function() {
                     news: "Колишній гравець гірників, а нині головний тренер Шахтаря U-17 В'ячеслав Шевчук прокоментував результат матчу відбору на Чемпіонат світу - 2018 Україна - Хорватія."
                 }
             ];
-            // Чат
+
             // $scope.myArray = [];
             // $scope.myName = "Anonim";
             //
@@ -203,19 +213,37 @@ app.directive("bodyBlock", function() {
             //         });
             // }
 
+            // Чат
+            $scope.timeChat = "4:20";
+
+            $scope.setName = function(nameChat) {
+                 $scope.chatName = nameChat;
+            }
+
+            $scope.sendMassage = function() {
+                let chatObj = {
+                    name: $scope.chatName,
+                    message: $scope.enterText,
+                    time: $scope.timeChat
+                };
+
+                $http.post('http://localhost:8000/chat-send-message', chatObj)
+                    .then(function successCallback(response) {
+                        $http.get('http://localhost:8000/chat')
+                            .then(function successCallback(response) {
+                                $scope.messages = response.data;
+                            }, function errorCallback(response) {
+                                console.log("Error!!!" + response.err);
+                            });
 
 
-            // Товари
-            // $scope.addGoods  = function(name, price) {
-            //     $scope.goodsName = name;
-            //     $scope.goodsPrice = price;
-            //
-            //     $scope.goodsArr = [{
-            //         name: $scope.goodsName,
-            //         price: $scope.goodsPrice
-            //     }];
-            //     console.log($scope.goodsArr);
-            // }
+                    }, function errorCallback(response) {
+                        console.log("Error!!!" + response.err);
+                    });
+
+
+
+            }
 
             // добавляння товару
             $scope.addGoods = function() {
@@ -239,6 +267,7 @@ app.directive("bodyBlock", function() {
                     });
 
             }
+
             //Регистрація
             $scope.registerAcc = function() {
                 let loginObj = {

@@ -46,6 +46,14 @@ app.post('/goods-change', function (req, res) {
     res.sendStatus(200);
 });
 
+//Чат надіслати повідомлення
+app.post('/chat-send-message', function(req, res) {
+    connection.query('INSERT INTO chat SET ?', req.body, function(err, result) {
+        if(err) throw err;
+        console.log('user added to database with id: ' +result.insertId);
+    });
+    res.sendStatus(200);
+})
 // регистрація акаунту
 app.post('/login-reg', function(req, res) {
     connection.query('INSERT INTO users SET ?', req.body, function(err, result) {
