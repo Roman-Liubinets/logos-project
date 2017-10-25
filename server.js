@@ -54,6 +54,17 @@ app.post('/chat-send-message', function(req, res) {
     });
     res.sendStatus(200);
 })
+
+
+//Отримати повідомлення
+app.get('/chat', function (req, res) {
+    connection.query('SELECT * FROM chat', function (err, rows) {
+        if (err) throw err;
+        console.log('get all itemses, length: ' + rows.length);
+        res.status(200).send(rows);
+    });
+});
+
 // регистрація акаунту
 app.post('/login-reg', function(req, res) {
     connection.query('INSERT INTO users SET ?', req.body, function(err, result) {

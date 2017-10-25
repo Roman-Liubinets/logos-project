@@ -6,10 +6,12 @@
             <input class="chat-btn" type="button" value="OK" ng-click="setName(enterName)" />
             <div class="text-area">
                 <table>
-                    <tr ng-repeat="options in myArray track by $index">
-                        <td></td>
-                        <td>{{myName}}:</td>
-                        <td>{{myMessage}}</td>
+                    <tr ng-repeat="b in messages track by $index">
+                        <td>
+                            <!-- {{b.time}} -->
+                        </td>
+                        <td>{{b.name}}:</td>
+                        <td>{{b.message}}</td>
                     </tr>
                 </table>
             </div>

@@ -310,6 +310,7 @@ body {
 }
 
 .content-catalog-item {
+display: inline-block;
     width: 220px;
     min-height: 340px;
     box-shadow: 0 5px 32px 2px rgba(0, 0, 0, .17);
@@ -317,7 +318,7 @@ body {
     border-width: 1px;
     border-color: hsla(0, 0%, 90%, .97);
     background-color: #fff;
-    margin-top: 18px;
+    margin-top: 28px;
     margin-bottom: 18px;
     padding-bottom: 15px;
 }

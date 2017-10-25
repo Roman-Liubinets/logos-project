@@ -214,6 +214,11 @@ app.directive("bodyBlock", function() {
             // }
 
             // Чат
+            $scope.currentDate = new Date();
+
+
+
+
             $scope.timeChat = "4:20";
 
             $scope.setName = function(nameChat) {
@@ -225,7 +230,7 @@ app.directive("bodyBlock", function() {
                 let chatObj = {
                     name: $scope.chatName,
                     message: $scope.enterText,
-                    time: $scope.timeChat
+                    time: $scope.currentDate
                 };
 
                 $http.post('http://localhost:8000/chat-send-message', chatObj)
@@ -242,6 +247,7 @@ app.directive("bodyBlock", function() {
                         console.log("Error!!!" + response.err);
                     });
                     $scope.enterText = "";
+                    console.log($scope.messages);
             }
 
             // добавляння товару
