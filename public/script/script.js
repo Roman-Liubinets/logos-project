@@ -218,6 +218,7 @@ app.directive("bodyBlock", function() {
 
             $scope.setName = function(nameChat) {
                  $scope.chatName = nameChat;
+                 $scope.enterName ='';
             }
 
             $scope.sendMassage = function() {
@@ -240,9 +241,7 @@ app.directive("bodyBlock", function() {
                     }, function errorCallback(response) {
                         console.log("Error!!!" + response.err);
                     });
-
-
-
+                    $scope.enterText = "";
             }
 
             // добавляння товару
