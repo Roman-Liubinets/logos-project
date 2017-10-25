@@ -27,6 +27,15 @@ app.post('/goods-add', function(req, res) {
     res.sendStatus(200);
 })
 
+//отримання товару
+app.get('/goods', function (req, res) {
+    connection.query('SELECT * FROM goods', function (err, rows) {
+        if (err) throw err;
+        console.log('get all itemses, length: ' + rows.length);
+        res.status(200).send(rows);
+    });
+});
+
 // регистрація акаунту
 app.post('/login-reg', function(req, res) {
     connection.query('INSERT INTO users SET ?', req.body, function(err, result) {
