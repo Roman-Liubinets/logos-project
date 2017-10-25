@@ -22,7 +22,7 @@ app.controller('myCtrl', function($scope, $http, ngDialog) {
         }, function errorCallback(response) {
             console.log("Error!!!" + response.err);
         });
-//Додати товар
+    //Додати товар
 
 })
 //Директива Меню
@@ -38,32 +38,32 @@ app.directive("headerBlock", function() {
             $scope.bodyLoginBlock = false;
 
             $scope.menuButton = [{
-                name: "Home",
-                action: function() {
-                    $scope.contact = false;
-                    $scope.home = true;
-                    $scope.blog = false;
-                    $scope.goods = false;
-                    $scope.bodyLoginBlock = false;
-                }
-            }, {
-                name: "Contact",
-                action: function() {
-                    $scope.contact = true;
-                    $scope.home = false;
-                    $scope.blog = false;
-                    $scope.goods = false;
-                    $scope.bodyLoginBlock = false;
-                }
-            }, {
-                name: "Blog",
-                action: function() {
-                    $scope.contact = false;
-                    $scope.home = false;
-                    $scope.blog = true;
-                    $scope.goods = false;
-                    $scope.bodyLoginBlock = false;
-                }
+                    name: "Home",
+                    action: function() {
+                        $scope.contact = false;
+                        $scope.home = true;
+                        $scope.blog = false;
+                        $scope.goods = false;
+                        $scope.bodyLoginBlock = false;
+                    }
+                }, {
+                    name: "Contact",
+                    action: function() {
+                        $scope.contact = true;
+                        $scope.home = false;
+                        $scope.blog = false;
+                        $scope.goods = false;
+                        $scope.bodyLoginBlock = false;
+                    }
+                }, {
+                    name: "Blog",
+                    action: function() {
+                        $scope.contact = false;
+                        $scope.home = false;
+                        $scope.blog = true;
+                        $scope.goods = false;
+                        $scope.bodyLoginBlock = false;
+                    }
                 }, {
                     name: "Goods",
                     action: function() {
@@ -72,27 +72,27 @@ app.directive("headerBlock", function() {
                         $scope.blog = false;
                         $scope.goods = true;
                         $scope.bodyLoginBlock = false;
+                    }
                 }
-            }
-            // , {
-            //     name: "Login",
-            //     action: function() {
-            //         $scope.contact = false;
-            //         $scope.home = false;
-            //         $scope.blog = false;
-            //         $scope.goods = false;
-            //         $scope.bodyLoginBlock = true;
-            // }
-            // }
-        ];
+                // , {
+                //     name: "Login",
+                //     action: function() {
+                //         $scope.contact = false;
+                //         $scope.home = false;
+                //         $scope.blog = false;
+                //         $scope.goods = false;
+                //         $scope.bodyLoginBlock = true;
+                // }
+                // }
+            ];
 
-        $scope.loginBlockShow = function() {
-            $scope.home = false;
-            $scope.contact = false;
-            $scope.blog = false;
-            $scope.goods = false;
-            $scope.bodyLoginBlock = true;
-        }
+            $scope.loginBlockShow = function() {
+                $scope.home = false;
+                $scope.contact = false;
+                $scope.blog = false;
+                $scope.goods = false;
+                $scope.bodyLoginBlock = true;
+            }
 
             $scope.checkUsers = function() {
                 let obj = {
@@ -139,7 +139,7 @@ app.directive("bodyBlock", function() {
                     news: "Колишній гравець гірників, а нині головний тренер Шахтаря U-17 В'ячеслав Шевчук прокоментував результат матчу відбору на Чемпіонат світу - 2018 Україна - Хорватія."
                 }
             ];
-// Чат
+            // Чат
             // $scope.myArray = [];
             // $scope.myName = "Anonim";
             //
@@ -157,83 +157,89 @@ app.directive("bodyBlock", function() {
             //     console.log($scope.myArray)
             // }
 
-// $scope.sendMassage = function() {
-//     let chatObj = {
-//         name: $scope.enterName,
-//         message: $scope.enterText
-//     };
-//
-//     $http.post('http://localhost:8000/chat-mess', chatObj)
-//         .then(function successCallback(response) {
-//         }, function errorCallback(response) {
-//             console.log("Error!!!" + response.err);
-//         });
-// }
+            // $scope.sendMassage = function() {
+            //     let chatObj = {
+            //         name: $scope.enterName,
+            //         message: $scope.enterText
+            //     };
+            //
+            //     $http.post('http://localhost:8000/chat-mess', chatObj)
+            //         .then(function successCallback(response) {
+            //         }, function errorCallback(response) {
+            //             console.log("Error!!!" + response.err);
+            //         });
+            // }
 
 
 
-// Товари
-// $scope.addGoods  = function(name, price) {
-//     $scope.goodsName = name;
-//     $scope.goodsPrice = price;
-//
-//     $scope.goodsArr = [{
-//         name: $scope.goodsName,
-//         price: $scope.goodsPrice
-//     }];
-//     console.log($scope.goodsArr);
-// }
+            // Товари
+            // $scope.addGoods  = function(name, price) {
+            //     $scope.goodsName = name;
+            //     $scope.goodsPrice = price;
+            //
+            //     $scope.goodsArr = [{
+            //         name: $scope.goodsName,
+            //         price: $scope.goodsPrice
+            //     }];
+            //     console.log($scope.goodsArr);
+            // }
 
-// добавляння товару
-$scope.addGoods  = function() {
-    let goodsObj = {
-        name: $scope.setGoodsName,
-        price: $scope.setGoodsPrice
-    };
+            // добавляння товару
+            $scope.addGoods = function() {
+                let goodsObj = {
+                    name: $scope.setGoodsName,
+                    price: $scope.setGoodsPrice
+                };
 
-    $http.post('http://localhost:8000/goods-add', goodsObj)
-        .then(function successCallback(response) {
-        }, function errorCallback(response) {
-            console.log("Error!!!" + response.err);
-        });
-
-}
-//Змінна товару
-
-//Регистрація
-$scope.registerAcc  = function() {
-    let loginObj = {
-        login: $scope.login,
-        password: $scope.password
-    };
-
-    $http.post('http://localhost:8000/login-reg', loginObj)
-        .then(function successCallback(response) {
-        }, function errorCallback(response) {
-            console.log("Error!!!" + response.err);
-        });
-        $scope.login = "";
-        $scope.password = "";
-        }
-
-//Змінна паролю
-$scope.changeAccPass = function() {
-    let loginObj = {
-        login: $scope.login,
-        password: $scope.password
-    };
-
-    $http.post('http://localhost:8000/login-change', loginObj)
-        .then(function successCallback(response) {
-        }, function errorCallback(response) {
-            console.log("Error!!!" + response.err);
-        });
-        $scope.login = "";
-        $scope.password = "";
-};
+                $http.post('http://localhost:8000/goods-add', goodsObj)
+                    .then(function successCallback(response) {
+                        $http.get('http://localhost:8000/goods')
+                            .then(function successCallback(response) {
+                                $scope.items = response.data;
+                            }, function errorCallback(response) {
+                                console.log("Error!!!" + response.err);
+                            });
 
 
-//Слайдер
+                    }, function errorCallback(response) {
+                        console.log("Error!!!" + response.err);
+                    });
+
+            }
+            //Змінна товару
+
+            //Регистрація
+            $scope.registerAcc = function() {
+                let loginObj = {
+                    login: $scope.login,
+                    password: $scope.password
+                };
+
+                $http.post('http://localhost:8000/login-reg', loginObj)
+                    .then(function successCallback(response) {}, function errorCallback(response) {
+                        console.log("Error!!!" + response.err);
+                    });
+                $scope.login = "";
+                $scope.password = "";
+            }
+
+            //Змінна паролю
+            $scope.changeAccPass = function() {
+                let loginObj = {
+                    login: $scope.login,
+                    password: $scope.password
+                };
+
+                $http.post('http://localhost:8000/login-change', loginObj)
+                    .then(function successCallback(response) {}, function errorCallback(response) {
+                        console.log("Error!!!" + response.err);
+                    });
+                $scope.login = "";
+                $scope.password = "";
+            };
+
+
+            //Слайдер
             var slideNow = 1;
             var translateWidth = 0;
             var slideCount = $('#slidewrapper').children().length;
@@ -446,7 +452,7 @@ $scope.changeAccPass = function() {
 //                 }
 //             });
 
-        // }
+// }
 
 
 
@@ -455,5 +461,5 @@ $scope.changeAccPass = function() {
 
 
 
-    // }
+// }
 // })

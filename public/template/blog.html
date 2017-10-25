@@ -67,12 +67,12 @@
             <input type="text" id="price" placeholder="введіть ціну" ng-model="setGoodsPrice" />
             <input type="button" class="buttonForAdd" value="ДОБАВИТИ" ng-click="addGoods(setGoodsName, setGoodsPrice)" />
         </div>
-        <div class="content-catalog-item" ng-repeat="goods in goodsArr track by $index">
+        <div class="content-catalog-item" ng-repeat="a in items track by $index">
             <a><img src="img/content-catalog-item-1.jpg" width="100%" height="170" alt=""></a>
-            <div class="content-catalog-name">{{goodsName}}:</div>
+            <div class="content-catalog-name">{{a.name}}:</div>
             <div class="content-catalog-price-container clearfix">
                 <div class="catalog-item-price">
-                    <span>{{goodsPrice}} грн.</span>
+                    <span>{{a.price}} грн.</span>
                 </div>
 
                 <input type="button" class="catalog-item-button" value="Купити" ng-click="" />
