@@ -1,4 +1,4 @@
-var app = angular.module('app', []);
+var app = angular.module('app', ['ngDialog']);
 
 // app.config(['$locationProvider', function ($locationProvider) {
 //     $locationProvider.hashPrefix('');
