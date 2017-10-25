@@ -65,6 +65,39 @@ app.get('/chat', function (req, res) {
     });
 });
 
+//Авторизація
+app.post('/login-auth', function (req, res) {
+    connection.query('SELECT * FROM users  WHERE login = ?', req.body.login, function (err, rows) {
+        if (err) throw err;
+        if (rows[0] != undefined) {
+            if (rows[0].password == req.body.pass) {
+                res.status(200).send("welcome");
+            } else {
+                res.status(200).send("wrong password");
+            }
+        } else {
+            res.status(200).send("wrong login");
+        }
+    });
+});
+
+//Завантажити дані авторизованого юзера
+app.post('/user-prof', function (req, res) {
+    connection.query('SELECT * FROM users  WHERE login = ?', req.body.login, function (err, rows) {
+        if (err) throw err;
+        if (rows[0] != undefined) {
+             connection.query('SELECT * FROM userpage  WHERE users_id = ?', rows[0].id,
+                function (err, result) {
+                    if (err) throw err;
+                    res.status(200).send(result);
+                }
+            );
+        } else {
+            res.status(200).send("User is undefined");
+        }
+    });
+});
+
 // регистрація акаунту
 app.post('/login-reg', function(req, res) {
     connection.query('INSERT INTO users SET ?', req.body, function(err, result) {

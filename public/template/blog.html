@@ -71,13 +71,13 @@
         </div>
         <div class="content-catalog-item" ng-repeat="a in items track by $index">
             <a><img src="img/content-catalog-item-1.jpg" width="100%" height="170" alt=""></a>
-            <div class="content-catalog-name">{{a.name}}:</div>
+            <div class="content-catalog-name">{{a.name}}</div>
             <div class="content-catalog-price-container clearfix">
                 <div class="catalog-item-price">
                     <span>{{a.price}} грн.</span>
                 </div>
 
-                <input type="button" class="catalog-item-button" value="Купити" ng-click="" />
+                <input type="button" class="catalog-item-button buyButton" value="Купити" ng-click="" />
                 <input type="button" class="catalog-item-button editButton" value="Змінити" ng-click="changeGoods(a.id, a.name, a.price)" />
                 <!-- <input type="button" class="catalog-item-button deleteButton" value="Вид." ng-click="deleteGoods()" /> -->
             </div>
@@ -106,6 +106,8 @@
                     <button type="submit" class="btn btn1 btn-success btn-block" ng-disabled="myForm.$invalid" ng-click="checkUsers()">Вхід</button>
                     <span class="field-pass">У вас є профіль? <a ng-click="registerAcc()">Регистрація</a></span>
                 </div>
+            </form>
+        </div>
             </form>
         </div>
     </div>

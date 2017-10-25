@@ -319,8 +319,9 @@ display: inline-block;
     border-color: hsla(0, 0%, 90%, .97);
     background-color: #fff;
     margin-top: 28px;
-    margin-bottom: 18px;
+    /*margin-bottom: 18px;*/
     padding-bottom: 15px;
+    margin-right: 25px;
 }
 
 .content-catalog-name {
@@ -331,6 +332,7 @@ display: inline-block;
     line-height: 18px;
     text-align: center;
     text-transform: uppercase;
+    font-weight: 700;
 }
 
 .content-catalog-price-container {
@@ -344,7 +346,7 @@ display: inline-block;
 
 .catalog-item-price {
     display: flex;
-    width: 106px;
+    width: 100%;
     height: 42px;
     float: left;
     align-items: center;
@@ -363,10 +365,10 @@ display: inline-block;
 
 .catalog-item-button {
     display: inline-block;
-    width: 79px;
+    width: 50%;
     height: 42px;
     float: right;
-    background-color: #000;
+    background-color: black;
     text-transform: uppercase;
     text-align: center;
     cursor: pointer;
@@ -376,11 +378,16 @@ display: inline-block;
 }
 
 .editButton {
-    width: 106px;
+    /*width: 106px;*/
     display: inline-block;
     color: #fff;
     font-weight: bold;
     float: left;
+    /*background-color: goldenrod;*/
+}
+
+.editButton:hover {
+    background-color: goldenrod;
 }
 
 .deleteButton {
@@ -389,8 +396,12 @@ display: inline-block;
     float: right;
 }
 
-.catalog-item-button:hover {
+.deleteButton:hover {
     background-color: #a06600;
+}
+
+.buyButton:hover {
+background-color: #a06600;
 }
 
 .user-block {
@@ -586,4 +597,11 @@ display: inline-block;
 .password-class {
     background: url("../img/sprites.png") no-repeat;
     background-position: 6px -270px;
+}
+
+.dialog-item-input {
+    margin-left: auto;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    border: 2px solid black;
 }

@@ -137,20 +137,20 @@ app.directive("headerBlock", function() {
                 $scope.bodyLoginBlock = true;
             }
 
-            $scope.checkUsers = function() {
-                let obj = {
-                    login: $scope.login,
-                    pass: $scope.password
-                }
-
-                $http.post('http://localhost:8000/login', obj)
-                    .then(function successCallback(response) {
-                        console.log(response.data);
-
-                    }, function errorCallback(response) {
-                        console.log("Error!!!" + response.err);
-                    });
-            }
+            // $scope.checkUsers = function() {
+            //     let obj = {
+            //         login: $scope.login,
+            //         pass: $scope.password
+            //     }
+            //
+            //     $http.post('http://localhost:8000/login', obj)
+            //         .then(function successCallback(response) {
+            //             console.log(response.data);
+            //
+            //         }, function errorCallback(response) {
+            //             console.log("Error!!!" + response.err);
+            //         });
+            // }
         }
     }
 })
@@ -272,7 +272,47 @@ app.directive("bodyBlock", function() {
                     });
 
             }
+            //------------------------------------------------------------
+            $scope.changePasswordStatus = false;
+            //Розлогінитись
+            $scope.logOut = function () {
+                $scope.newUser = true;
+                $scope.enterLogin = false;
+                localStorage.userName = "default";
+                $scope.ProfileStatus = false;
+            };
+            //Загрузка авторизованого юзера (якщо є)
+            if (localStorage.userName == undefined) {
+                localStorage.userName = "default";
+            } else {
+                if (localStorage.userName != "default") {
+                    $scope.userIn = "Wellcome " + localStorage.userName + "!!!";
+                    $scope.newUser = false;
+                    $scope.ProfileStatus = true;
+                    $scope.enterLogin = true;
+                    $scope.user = "";
+                    let loginObj = {
+                        login: localStorage.userName
+                    };
+                    $http.post('http://localhost:8000/user-prof', loginObj)
+                        .then(function successCallback(response) {
+                            $scope.userProfile = response.data;
+                            $scope.nameUserProfile = $scope.userProfile[0].name;
+                            $scope.snameUserProfile = $scope.userProfile[0].sname;
+                            $scope.dateUserProfile = $scope.userProfile[0].date;
+                            $scope.aboutUserProfile = $scope.userProfile[0].about;
 
+                        }, function errorCallback(response) {
+                            console.log("Error!!!" + response.err);
+                        });
+
+
+                } else {
+                    $scope.newUser = true;
+                    $scope.enterLogin = false;
+                }
+            };
+            
             //Регистрація
             $scope.registerAcc = function() {
                 let loginObj = {
@@ -287,6 +327,43 @@ app.directive("bodyBlock", function() {
                 $scope.login = "";
                 $scope.password = "";
             }
+            //Авторизація
+            $scope.checkUsers = function() {
+                let loginObj = {
+                    login: $scope.login,
+                    password: $scope.password
+                };
+                $http.post('http://localhost:8000/login-auth', loginObj)
+                    .then(function successCallback(response) {
+                        if (response.data == "welcome") {
+                            $scope.userIn = "Wellcome " + $scope.login + "!!!";
+                            $scope.newUser = false;
+                            $scope.enterLogin = true;
+                            $scope.user = "";
+                            localStorage.userName = $scope.login;
+
+                            let loginObj = {
+                                login: localStorage.userName
+                            };
+                            $http.post('http://localhost:8000/user-prof', loginObj)
+                                .then(function successCallback(response) {
+                                    $scope.userProfile = response.data;
+                                    $scope.nameUserProfile = $scope.userProfile[0].name;
+                                    $scope.snameUserProfile = $scope.userProfile[0].sname;
+                                    $scope.dateUserProfile = $scope.userProfile[0].date;
+                                    $scope.aboutUserProfile = $scope.userProfile[0].about;
+                                    $scope.ProfileStatus = true;
+
+                                }, function errorCallback(response) {
+                                    console.log("Error!!!" + response.err);
+                                });
+                        } else {
+                            $scope.user = response.data;
+                        };
+                    }, function errorCallback(response) {
+                        console.log("Error!!!" + response.err);
+                    });
+            };
 
             //Змінна паролю
             $scope.changeAccPass = function() {
