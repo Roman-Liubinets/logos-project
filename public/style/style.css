@@ -1,0 +1,588 @@
+html, body {
+    min-width: 1122px;
+    min-height: 1750px;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: papayawhip;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.container {
+    width: 940px;
+    margin: 0 auto;
+    padding: 0 10px;
+    min-height: 70px;
+}
+
+.main-Hader {
+    margin-bottom: 60px;
+    background-color: white;
+    border-bottom: 2px solid black;
+}
+
+.blog {
+    padding: 40px 40px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    background-color: white;
+    border: 2px solid black;
+    font-size: 10px;
+}
+
+.btn1 {
+    float: right;
+    display: inline-block;
+    border: 1px solid black;
+    width: 60px;
+    height: 30px;
+    /*text-align: center;*/
+}
+
+.btn2 {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.btn-news {
+    background-color: black;
+    width: 140px;
+    /*height: 40px;*/
+    text-align: center;
+    box-sizing: border-box;
+    margin-left: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btn-news:hover {
+    background-color: darkorange;
+}
+
+.btn-news a {
+    text-decoration: none;
+    color: white;
+}
+
+time {
+    font-size: 14px;
+}
+
+time:last-child {
+    margin-bottom: 50px;
+}
+
+.blogs-style {
+    width: 450px;
+    margin: 15px;
+}
+
+.blogs-style h2 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.blogs-style h2 a {
+    color: black;
+}
+
+.blogs-style p {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.menu {
+    width: 780px;
+    display: inline-block;
+    min-height: 70px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    float: left;
+    background-color: white;
+}
+
+.menu ul li {
+    display: inline-block;
+}
+
+.menu a {
+    margin: 0 35px;
+    font-weight: bolder;
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+    /*padding-top: 10px;*/
+}
+
+.navigator {
+    width: 555px;
+    margin: 0;
+    float: left;
+    padding-top: 15px;
+}
+
+.align {
+    text-align: center;
+}
+
+.menu a:hover {
+    border-bottom: 3px solid black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#block-for-slider {
+    width: 300px;
+    /*margin: 0 auto;
+    margin-top: 100px;*/
+}
+
+#viewport {
+    width: 100%;
+    display: table;
+    position: relative;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#slidewrapper {
+    position: relative;
+    width: calc(100% * 4);
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    -webkit-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+}
+
+#slidewrapper ul, #slidewrapper li {
+    margin: 0;
+    padding: 0;
+}
+
+#slidewrapper li {
+    width: calc(100%/4);
+    list-style: none;
+    display: inline;
+    float: left;
+}
+
+.slide-img {
+    width: 100%;
+}
+
+#prev-btn, #next-btn {
+    /*position: absolute;*/
+    display: inline-block;
+    margin-top: 25px;
+    width: 140px;
+    height: 40px;
+    background-color: black;
+    float: left;
+    /*top: calc(120% - 25px);*/
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#prev-btn:hover, #next-btn:hover {
+    cursor: pointer;
+    background-color: darkorange;
+}
+
+#prev-btn {
+    margin-right: 20px;
+}
+
+#nav-btns {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.slide-nav-btn {
+    position: relative;
+    display: inline-block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 3px;
+}
+
+.slide-nav-btn:hover {
+    cursor: pointer;
+}
+
+#slidewrapper li:nth-child(3), #slidewrapper li:nth-child(4) {
+    display: none;
+}
+
+.formLogin {
+    width: 340px;
+    min-height: 70px;
+    margin: 0 auto;
+}
+
+.Chat-block {
+    position: relative;
+    left: -230px;
+    top: 100px;
+    width: 255px;
+    min-height: 250px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    border: 1px solid black;
+    border-radius: 3%;
+    box-shadow: 4px 4px 13px black;
+    background-color: white;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.Chat-block h2 {
+    text-align: center;
+    font-weight: 700;
+}
+
+.text-area {
+    height: 150px;
+}
+
+.chat-input {
+    border: 1px solid black;
+    padding-left: 20px;
+    margin-right: 9px;
+    width: 147px;
+}
+
+.chat-btn {
+    width: 69px;
+    height: 26px;
+    border: 0px solid black;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+}
+
+.chat-btn:hover {
+    background-color: deepskyblue;
+}
+
+.blogs-style-right {
+    /*position: relative;
+    top: -450px;
+    right: 120px;
+    float: right;
+    width: 200px;*/
+    float: right;
+    width: 300px;
+}
+
+.blogs-style-left {
+    width: 500px;
+    float: left;
+}
+
+.content-catalog-item {
+    width: 220px;
+    min-height: 340px;
+    box-shadow: 0 5px 32px 2px rgba(0, 0, 0, .17);
+    border-style: solid;
+    border-width: 1px;
+    border-color: hsla(0, 0%, 90%, .97);
+    background-color: #fff;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    padding-bottom: 15px;
+}
+
+.content-catalog-name {
+    max-height: 36px;
+    min-height: 36px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    line-height: 18px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.content-catalog-price-container {
+    display: block;
+    max-width: 185px;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    background-color: transparent;
+}
+
+.catalog-item-price {
+    display: flex;
+    width: 106px;
+    height: 42px;
+    float: left;
+    align-items: center;
+    background-color: #e5e5e5;
+    border: 1px solid #e5e5e5;
+}
+
+.catalog-item-price span {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    line-height: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.catalog-item-button {
+    display: inline-block;
+    width: 79px;
+    height: 42px;
+    float: right;
+    background-color: #000;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    border: 0px solid black;
+    color: #fff;
+    font-weight: bold;
+}
+
+.editButton {
+    width: 106px;
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    float: left;
+}
+
+.deleteButton {
+    width: 79px;
+    display: inline-block;
+    float: right;
+}
+
+.catalog-item-button:hover {
+    background-color: #a06600;
+}
+
+.user-block {
+    display: block;
+    width: 100px;
+    height: 50px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    float: right;
+}
+
+.login-block {
+    display: block;
+    width: 500px;
+    min-height: 420px;
+    border: 2px solid black;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.formLogin h2 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 30px;
+    line-height: 42px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.formLogin p {
+    display: block;
+    margin-bottom: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    float: none;
+    color: #000;
+    text-align: left;
+    text-transform: uppercase;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 700;
+}
+
+.users-login-navigation {
+    width: 100%;
+    align-items: center;
+    display: block;
+    margin-top: 25px;
+}
+
+.text-field {
+    display: block;
+    width: 95%;
+    height: 41px;
+    margin-bottom: 18px;
+    border: 2px solid #000;
+    background-color: #f9f6f3;
+    text-align: left;
+}
+
+.text-field.login-class {
+    width: 100%;
+    padding-left: 30px;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.text-field.password-class {
+    width: 100%;
+    padding-left: 30px;
+    text-transform: none;
+}
+
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    position: absolute;
+    margin-left: 0px;
+    /*margin-top: 4px \9;*/
+}
+
+.field-container {
+    display: block;
+    width: 100%;
+}
+
+.checkbox {
+    float: left;
+}
+
+.checkbox label {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.field-container a {
+    float: right;
+    text-decoration: underline;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    font-family: 'PT Sans Narrow', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn1 {
+    display: block;
+    width: 100%;
+    margin-top: 11px;
+    height: 43px;
+    background-color: #000;
+    transition: background-color 300ms ease;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 0;
+    font-weight: 700;
+}
+
+.field-pass {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.field-pass a {
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.buttonForAdd {
+    width: 80px;
+    margin-left: 20px;
+    background-color: black;
+    height: 35px;
+    color: white;
+    border: 0px solid black;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.buttonForAdd:hover {
+    background-color: darkorange;
+    border: 0px solid black;
+}
+
+.goodsCSS {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.goodsMenu input {
+    border: 2px solid black;
+    padding: 5px 10px;
+}
+
+.goodsMenu {
+    width: 100%;
+}
+
+.blogs-style-right h2 {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 25px;
+    color: black;
+    font-weight: 700;
+    margin-bottom: 45px;
+}
+
+.blog {
+    background: url("../img/column-delimiter.png") no-repeat, url("../img/content-background.jpg") 50% 0;
+    background-position: 58% center;
+}
+
+.login-class {
+    background: url("../img/sprites.png") no-repeat;
+    background-position: 6px -895px;
+}
+
+.password-class {
+    background: url("../img/sprites.png") no-repeat;
+    background-position: 6px -270px;
+}

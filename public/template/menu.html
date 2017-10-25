@@ -1,0 +1,30 @@
+<header class="main-Hader">
+    <div class="container clearfix">
+        <nav class="menu">
+            <!-- <input type="button" value="Home" ng-click="start1()" />
+    <input type="button" value="Contact" ng-click="start2()" />
+    <input type="button" value="Blog" ng-click="start3()" /> -->
+            <div class="navigator">
+                <ul>
+                    <li ng-repeat="mb in menuButton">
+                        <a href="#" ng-click="mb.action()">{{mb.name}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="user-block">
+                <a class="login" href="#" ng-click="loginBlockShow()">Вхід</a>
+            </div>
+            <!-- <form class="formLogin" name="myForm" novalidate>
+<label for="loginId">Логін:
+                <input type="text" ng-model="login" name="login" id="loginId" required></label>
+                <span style="color: red" ng-show="myForm.login.$touched && myForm.login.$invalid"><span ng-show="myForm.login.$error.required">Пусте поле</span></span>
+<label for="passwordId">Пароль:
+                <input type="text" ng-model="password" id="passwordId" required></label>
+                <button type="submit" class="btn btn1 btn-success btn-block" ng-disabled="myForm.$invalid" ng-click="checkUsers()">OK</button>
+
+            </form> -->
+
+
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,110 @@
+<main class="container">
+    <div ng-show="home">
+        <div class="Chat-block">
+            <h2>Chatrik</h2>
+            <input class="chat-input" type="text" placeholder="Enter your Name" ng-model="enterName">
+            <input class="chat-btn" type="button" value="OK" ng-click="setName(enterName)" />
+            <div class="text-area">
+                <table>
+                    <tr ng-repeat="options in myArray track by $index">
+                        <td></td>
+                        <td>{{myName}}:</td>
+                        <td>{{myMessage}}</td>
+                    </tr>
+                </table>
+            </div>
+            <input class="chat-input" type="text" placeholder="Enter text here" ng-model="enterText">
+            <input class="chat-btn" type="button" value="Send" ng-click="sendMassage(enterText)" />
+        </div>
+    </div>
+
+    <div ng-show="contact">
+        <h1>Contact</h1>
+    </div>
+
+    <div ng-show="blog" ng-cloak class="blog clearfix">
+        <div class="blogs-style-left">
+            <div ng-repeat="a in newsArray" class="blogs-style">
+                <h2><a>{{a.title}}</a></h2>
+                <p>{{a.news}}</p>
+                <time datetime="2017-10-12">10 жовтня</time>
+            </div>
+            <div class="btn-news clearfix">
+                <a class="btn2" href="#">ВСІ НОВИНИ</a>
+            </div>
+        </div>
+        <div class="blogs-style-right">
+            <h2>Фотогалерея</h2>
+            <div id="block-for-slider">
+                <div id="viewport">
+                    <ul id="slidewrapper">
+                        <li class="slide"><img src="img/1.jpg" alt="1" class="slide-img"></li>
+                        <li class="slide"><img src="img/2.jpg" alt="2" class="slide-img"></li>
+                        <li class="slide"><img src="img/3.jpg" alt="3" class="slide-img"></li>
+                        <li class="slide"><img src="img/4.jpg" alt="4" class="slide-img"></li>
+                    </ul>
+
+                    <ul id="nav-btns">
+                        <li class="slide-nav-btn"></li>
+                        <li class="slide-nav-btn"></li>
+                        <li class="slide-nav-btn"></li>
+                        <li class="slide-nav-btn"></li>
+                    </ul>
+                </div>
+                <div id="prev-next-btns">
+                    <div id="prev-btn">НАЗАД</div>
+                    <div id="next-btn">ВПЕРЕД</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div ng-show="goods" ng-cloak>
+        <div class="goodsMenu">
+            <label for="goods" class="goodsCSS">Товар:</label>
+            <input type="text" id="goods" placeholder="Ім'я товару" ng-model="setGoodsName" />
+            <label for="price" class="goodsCSS">Ціна:</label>
+            <input type="text" id="price" placeholder="введіть ціну" ng-model="setGoodsPrice" />
+            <input type="button" class="buttonForAdd" value="ДОБАВИТИ" ng-click="addGoods(setGoodsName, setGoodsPrice)" />
+        </div>
+        <div class="content-catalog-item" ng-repeat="goods in goodsArr track by $index">
+            <a><img src="img/content-catalog-item-1.jpg" width="100%" height="170" alt=""></a>
+            <div class="content-catalog-name">{{goodsName}}:</div>
+            <div class="content-catalog-price-container clearfix">
+                <div class="catalog-item-price">
+                    <span>{{goodsPrice}} грн.</span>
+                </div>
+
+                <input type="button" class="catalog-item-button" value="Купити" ng-click="" />
+                <input type="button" class="catalog-item-button editButton" value="Змінити" ng-click="" />
+                <input type="button" class="catalog-item-button deleteButton" value="Вид." ng-click="" />
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-show="bodyLoginBlock">
+        <div class="login-block">
+            <form class="formLogin" name="myForm" novalidate>
+                <h2>ВХІД В ОСОБИСТИЙ КАБІНЕТ</h2>
+                <p>
+                    ВВЕДІТЬ ЛОГІН І ПАРОЛЬ ДЛЯ ВХОДУ В ВАШ КАБІНЕТ КОРИСТУВАЧА:
+                </p>
+                <div class="users-login-navigation">
+                    <input class="login-class text-field" type="text" ng-model="login" name="login" placeholder="Введіть логін" required>
+                    <span style="color: red" ng-show="myForm.login.$touched && myForm.login.$invalid"><span ng-show="myForm.login.$error.required">Пусте поле</span></span>
+                    <input class="password-class text-field" type="password" ng-model="password" placeholder="Введіть пароль" required>
+                    <div class="field-container clearfix">
+                        <div class="checkbox">
+                            <input type="checkbox" id="saveMe" />
+                            <label for="saveMe">ЗАПАМ'ЯТАЙ МЕНЕ</label>
+                        </div>
+                        <a ng-click="changeAccPass()">Я ЗАБУВ ПАРОЛЬ</a>
+                    </div>
+                    <button type="submit" class="btn btn1 btn-success btn-block" ng-disabled="myForm.$invalid" ng-click="checkUsers()">Вхід</button>
+                    <span class="field-pass">У вас є профіль? <a ng-click="registerAcc()">Регистрація</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

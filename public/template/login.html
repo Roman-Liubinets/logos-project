@@ -1,0 +1,7 @@
+<form class="formLogin" name="myForm" novalidate>
+    <input type="text" ng-model="login" name="login" required>
+    <span style="color: red" ng-show="myForm.login.$touched && myForm.login.$invalid"><span ng-show="myForm.login.$error.required">Пусте поле</span></span>
+    <input type="text" ng-model="password" required>
+
+    <button type="submit" class="btn1 btn-success btn-block" ng-disabled="myForm.$invalid" ng-click="checkUsers()">OK</button>
+</form>
