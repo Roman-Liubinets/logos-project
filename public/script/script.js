@@ -13,7 +13,16 @@ var app = angular.module('app', ['ngDialog']);
 // });
 
 
-app.controller('myCtrl', function($scope) {
+app.controller('myCtrl', function($scope, $http, ngDialog) {
+    $scope.items = [];
+
+    $http.get('http://localhost:8000/goods')
+        .then(function successCallback(response) {
+            $scope.items = response.data;
+        }, function errorCallback(response) {
+            console.log("Error!!!" + response.err);
+        });
+//Додати товар
 
 })
 //Директива Меню
