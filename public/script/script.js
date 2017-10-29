@@ -325,7 +325,31 @@ $scope.registerAcc = function(index, login, password, name, sname, date, about) 
         ngDialog.open({
                     template: '/template/registerAccount.html',
                     scope: $scope,
-                    controller: function($scope) {}
+                    controller: function($scope) {
+                        let loginObj = {
+                            login: $scope.login,
+                            password: $scope.password,
+                            name: $scope.regname,
+                            sname: $scope.regsname,
+                            date: $scope.regdate,
+                            about: $scope.regabout
+                        };
+
+                        $http.post('http://localhost:8000/login-reg', loginObj)
+                            .then(function successCallback(response) {
+                                $http.get('http://localhost:8000/users')
+                                    $http.get('http://localhost:8000/userpage')
+                                    .then(function successCallback(response) {
+                                        $scope.user = response.data;
+                                    }, function errorCallback(response) {
+                                        console.log("Error!!!" + response.err);
+                                    });
+
+
+                            }, function errorCallback(response) {
+                                console.log("Error!!!" + response.err);
+                            });
+                    }
                 })
             }
 
