@@ -117,16 +117,7 @@ app.directive("headerBlock", function() {
                         $scope.bodyLoginBlock = false;
                     }
                 }
-                // , {
-                //     name: "Login",
-                //     action: function() {
-                //         $scope.contact = false;
-                //         $scope.home = false;
-                //         $scope.blog = false;
-                //         $scope.goods = false;
-                //         $scope.bodyLoginBlock = true;
-                // }
-                // }
+
             ];
 
             $scope.loginBlockShow = function() {
@@ -135,35 +126,14 @@ app.directive("headerBlock", function() {
                 $scope.blog = false;
                 $scope.goods = false;
                 $scope.bodyLoginBlock = true;
+                $scope.enterLogin = true;
             }
 
-            // $scope.checkUsers = function() {
-            //     let obj = {
-            //         login: $scope.login,
-            //         pass: $scope.password
-            //     }
-            //
-            //     $http.post('http://localhost:8000/login', obj)
-            //         .then(function successCallback(response) {
-            //             console.log(response.data);
-            //
-            //         }, function errorCallback(response) {
-            //             console.log("Error!!!" + response.err);
-            //         });
-            // }
+
         }
     }
 })
 
-// app.directive("loginBlock", function() {
-//     return {
-//         replace:true,
-//         templateUrl: "template/login.html",
-//         controller: function() {
-//
-//         }
-//     }
-// })
 
 app.directive("bodyBlock", function() {
     return {
@@ -273,23 +243,24 @@ app.directive("bodyBlock", function() {
 
             }
             //------------------------------------------------------------
-            $scope.changePasswordStatus = false;
-            //Розлогінитись
             $scope.logOut = function () {
-                $scope.newUser = true;
-                $scope.enterLogin = false;
+                $scope.enterLogin = true;
                 localStorage.userName = "default";
                 $scope.ProfileStatus = false;
+                $scope.login = "";
+                $scope.password = "";
             };
+
+
             //Загрузка авторизованого юзера (якщо є)
             if (localStorage.userName == undefined) {
                 localStorage.userName = "default";
+                $scope.enterLogin = true;
             } else {
                 if (localStorage.userName != "default") {
                     $scope.userIn = "Wellcome " + localStorage.userName + "!!!";
-                    $scope.newUser = false;
                     $scope.ProfileStatus = true;
-                    $scope.enterLogin = true;
+                    $scope.enterLogin = false;
                     $scope.user = "";
                     let loginObj = {
                         login: localStorage.userName
@@ -308,26 +279,11 @@ app.directive("bodyBlock", function() {
 
 
                 } else {
-                    $scope.newUser = true;
-                    $scope.enterLogin = false;
+                    $scope.enterLogin = true;
                 }
             };
-            
-            //Регистрація
-            $scope.registerAcc = function() {
-                let loginObj = {
-                    login: $scope.login,
-                    password: $scope.password
-                };
 
-                $http.post('http://localhost:8000/login-reg', loginObj)
-                    .then(function successCallback(response) {}, function errorCallback(response) {
-                        console.log("Error!!!" + response.err);
-                    });
-                $scope.login = "";
-                $scope.password = "";
-            }
-            //Авторизація
+            //авторизація
             $scope.checkUsers = function() {
                 let loginObj = {
                     login: $scope.login,
@@ -337,8 +293,7 @@ app.directive("bodyBlock", function() {
                     .then(function successCallback(response) {
                         if (response.data == "welcome") {
                             $scope.userIn = "Wellcome " + $scope.login + "!!!";
-                            $scope.newUser = false;
-                            $scope.enterLogin = true;
+                            $scope.enterLogin = false;
                             $scope.user = "";
                             localStorage.userName = $scope.login;
 
@@ -363,23 +318,16 @@ app.directive("bodyBlock", function() {
                     }, function errorCallback(response) {
                         console.log("Error!!!" + response.err);
                     });
-            };
+            }
 
-            //Змінна паролю
-            $scope.changeAccPass = function() {
-                let loginObj = {
-                    login: $scope.login,
-                    password: $scope.password
-                };
-
-                $http.post('http://localhost:8000/login-change', loginObj)
-                    .then(function successCallback(response) {}, function errorCallback(response) {
-                        console.log("Error!!!" + response.err);
-                    });
-                $scope.login = "";
-                $scope.password = "";
-            };
-
+// регистрація
+$scope.registerAcc = function(login, password, name, sname, date, about) {
+        ngDialog.open({
+                    template: '/template/registerAccount.html',
+                    scope: $scope,
+                    controller: function($scope) {}
+                })
+            }
 
             //Слайдер
             var slideNow = 1;

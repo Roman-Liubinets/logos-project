@@ -70,7 +70,7 @@ app.post('/login-auth', function (req, res) {
     connection.query('SELECT * FROM users  WHERE login = ?', req.body.login, function (err, rows) {
         if (err) throw err;
         if (rows[0] != undefined) {
-            if (rows[0].password == req.body.pass) {
+            if (rows[0].password == req.body.password) {
                 res.status(200).send("welcome");
             } else {
                 res.status(200).send("wrong password");
@@ -86,7 +86,7 @@ app.post('/user-prof', function (req, res) {
     connection.query('SELECT * FROM users  WHERE login = ?', req.body.login, function (err, rows) {
         if (err) throw err;
         if (rows[0] != undefined) {
-             connection.query('SELECT * FROM userpage  WHERE users_id = ?', rows[0].id,
+            connection.query('SELECT * FROM userpage  WHERE users_id = ?', rows[0].id,
                 function (err, result) {
                     if (err) throw err;
                     res.status(200).send(result);
@@ -98,54 +98,14 @@ app.post('/user-prof', function (req, res) {
     });
 });
 
-// регистрація акаунту
-app.post('/login-reg', function(req, res) {
-    connection.query('INSERT INTO users SET ?', req.body, function(err, result) {
-        if(err) throw err;
-        console.log('user added to database with id: ' +result.insertId);
+//Отримати юзерів
+app.get('/users', function (req, res) {
+    connection.query('SELECT * FROM users', function (err, rows) {
+        if (err) throw err;
+        console.log('get all itemss, length: ' + rows.length);
+        res.status(200).send(rows);
     });
-    res.sendStatus(200);
-})
-
-//змінити пароль
-app.post('/login-change', function(req, res) {
-    connection.query('UPDATE users SET password = ? WHERE login = ?', [req.body.password,req.body.login], function(err, result) {
-        if(err) throw err;
-    });
-    res.sendStatus(200);
-})
-
-
-
-// app.post('/login', function (req, res) {
-//     var user = [{
-//             login: "user1",
-//             pass: "123"
-// },
-//         {
-//             login: "user2",
-//             pass: "123"
-// }, {
-//             login: "user3",
-//             pass: "123"
-// }
-//            ]
-//
-//     for(var i=0; i<user.length; i++) {
-//         if (req.body.login == user[i].login) {
-//             if (req.body.password == user[i].pass) {
-//                 res.status(200).send("Welcome " + user[i].login);
-// 				break;
-//             } else {
-//                 res.status(200).send("Wrong password");
-// 				break;
-//             }
-//         } else {
-//             res.status(200).send("Wrong login");
-// 			break;
-//         }
-//     }
-// })
+});
 
 
 

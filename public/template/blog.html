@@ -86,7 +86,7 @@
     </div>
 
     <div ng-show="bodyLoginBlock">
-        <div class="login-block">
+        <div class="login-block" ng-show="enterLogin">
             <form class="formLogin" name="myForm" novalidate>
                 <h2>ВХІД В ОСОБИСТИЙ КАБІНЕТ</h2>
                 <p>
@@ -106,9 +106,19 @@
                     <button type="submit" class="btn btn1 btn-success btn-block" ng-disabled="myForm.$invalid" ng-click="checkUsers()">Вхід</button>
                     <span class="field-pass">У вас є профіль? <a ng-click="registerAcc()">Регистрація</a></span>
                 </div>
+                <div>
+                </div>
             </form>
         </div>
-            </form>
+        <div class="profilePage" ng-show ="ProfileStatus">
+            <h1>Profile Page</h1>
+            Your name: {{nameUserProfile}} <br>
+            Your surname: {{snameUserProfile}} <br>
+            Your date b. : {{dateUserProfile}} <br>
+            About your self : {{aboutUserProfile}} <br>
+
+            <button type="submit" class="btn btn1 btn-success btn-block" ng-click="logOut()">Вихід</button>
+        </div>
         </div>
     </div>
 </main>
