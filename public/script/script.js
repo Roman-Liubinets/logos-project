@@ -139,7 +139,7 @@ app.directive("bodyBlock", function() {
     return {
         replace: true,
         templateUrl: "template/blog.html",
-        controller: function($scope, $http) {
+        controller: function($scope, $http, ngDialog) {
             $scope.newsArray = [{
                     title: "Джордж Веа - один з головних претендентів  \n на посаду президента Ліберії",
                     news: "Екс-форвард Монако, ПСЖ і Мілана Джордж Веа може бути обраний президентом Ліберії, повідомляє Le Parisien"
@@ -321,7 +321,7 @@ app.directive("bodyBlock", function() {
             }
 
 // регистрація
-$scope.registerAcc = function(login, password, name, sname, date, about) {
+$scope.registerAcc = function(index, login, password, name, sname, date, about) {
         ngDialog.open({
                     template: '/template/registerAccount.html',
                     scope: $scope,
