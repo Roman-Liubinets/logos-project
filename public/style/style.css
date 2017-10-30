@@ -250,9 +250,10 @@ body {
 }
 
 .Chat-block {
-    position: relative;
+    /*position: relative;
     left: -230px;
-    top: 100px;
+    top: 100px;*/
+    float: left;
     width: 255px;
     min-height: 250px;
     padding-left: 15px;

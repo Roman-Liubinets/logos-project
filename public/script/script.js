@@ -471,3 +471,13 @@ $scope.registerAcc = function(index, login, password, name, sname, date, about) 
         }
     }
 })
+
+app.directive("footerBlock", function() {
+    return {
+        replace: true,
+        templateUrl: "template/footer.html",
+        controller: function($scope, $http) {
+
+        }
+    }
+})
