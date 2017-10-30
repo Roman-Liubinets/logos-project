@@ -93,7 +93,7 @@ app.post('/login-reg', function (req, res) {
                     if (err) throw err;
                     console.log('user added to database with id: ' + result.insertId);
 
-					connection.query('INSERT INTO userpage SET name = ?, sname = ?, date = ?, about', [req.body.name, req.body.sname, req.body.date, req.body.about],
+					connection.query('INSERT INTO userpage SET name = ?, sname = ?, date = ?, about = ?', [req.body.name, req.body.sname, req.body.date, req.body.about],
 		                function (err, result) {
 		                    if (err) throw err;
 		                    console.log('user added to database with id: ' + result.insertId);

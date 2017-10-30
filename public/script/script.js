@@ -326,6 +326,7 @@ $scope.registerAcc = function(index, login, password, name, sname, date, about) 
                     template: '/template/registerAccount.html',
                     scope: $scope,
                     controller: function($scope) {
+                        $scope.regAcc = function(){
                         let loginObj = {
                             login: $scope.login,
                             password: $scope.password,
@@ -338,7 +339,7 @@ $scope.registerAcc = function(index, login, password, name, sname, date, about) 
                         $http.post('http://localhost:8000/login-reg', loginObj)
                             .then(function successCallback(response) {
                                 $http.get('http://localhost:8000/users')
-                                    $http.get('http://localhost:8000/userpage')
+                                    // $http.get('http://localhost:8000/userpage')
                                     .then(function successCallback(response) {
                                         $scope.user = response.data;
                                     }, function errorCallback(response) {
@@ -349,8 +350,20 @@ $scope.registerAcc = function(index, login, password, name, sname, date, about) 
                             }, function errorCallback(response) {
                                 console.log("Error!!!" + response.err);
                             });
+
+
+
+                            };
                     }
                 })
+                .closePromise.then(function(res) {
+                    $http.get('http://localhost:8000/users')
+                        .then(function successCallback(response) {
+                            $scope.user = response.data;
+                        }, function errorCallback(response) {
+                            console.log("Error!!!" + response.err);
+                        });
+                });
             }
 
             //Слайдер
