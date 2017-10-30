@@ -111,12 +111,15 @@
             </form>
         </div>
         <div class="profilePage" ng-show="ProfileStatus">
-            <div>
-                <h1>PROFILE PAGE</h1> Your name: {{nameUserProfile}} <br> Your surname: {{snameUserProfile}} <br> Your date b. : {{dateUserProfile}} <br> About your self : {{aboutUserProfile}} <br>
-
-                <button type="submit" class="btn btn1 btn-success btn-block" ng-click="logOut()">Вихід</button>
-            </div>
-        </div>
+    <div class="profile-page-container">
+        <h1>PROFILE PAGE</h1>
+        <p>Your name: {{nameUserProfile}}</p>
+        <p>Your surname: {{snameUserProfile}}</p>
+        <p>Your date b. : {{dateUserProfile}}</p>
+        <p>About your self : {{aboutUserProfile}}</p>
+        <button type="submit" class="btn btn1 btn-success btn-block" ng-click="logOut()">Вихід</button>
+    </div>
+</div>
     </div>
     </div>
 </main>

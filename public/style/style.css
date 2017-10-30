@@ -615,12 +615,33 @@ background-color: #a06600;
     background-color: white;
 }
 
-.profilePage h1 {
+.profile-page-container {
+    width: 340px;
+    min-height: 70px;
+    margin: 0 auto;
+}
+
+
+.profile-page-container h1 {
     margin-top: 25px;
     margin-bottom: 15px;
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 30px;
     line-height: 42px;
     text-transform: uppercase;
+    font-weight: 700;
+}
+
+.profile-page-container p {
+    display: block;
+    margin-bottom: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    float: none;
+    color: #000;
+    text-align: left;
+    text-transform: uppercase;
+    font-family: 'PT Sans Narrow', sans-serif;
     font-weight: 700;
 }
