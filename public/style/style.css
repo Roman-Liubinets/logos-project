@@ -1,6 +1,6 @@
 html, body {
     min-width: 1122px;
-    min-height: 1750px;
+    min-height: 550px;
     margin: 0;
     padding: 0;
 }
@@ -645,4 +645,15 @@ background-color: #a06600;
     text-transform: uppercase;
     font-family: 'PT Sans Narrow', sans-serif;
     font-weight: 700;
+}
+
+.main-footer {
+    height: 170px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    align-items: center;
+    margin-top: 70px;
+    background: url("../img/footer-background.jpg") repeat;
+    background-position: 0px 0px;
+    background-size: auto;
 }
