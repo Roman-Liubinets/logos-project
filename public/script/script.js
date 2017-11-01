@@ -1,15 +1,18 @@
 var app = angular.module('app', ['ngDialog']);
 
+//Забираєм %2F та # з url сайту
 // app.config(['$locationProvider', function ($locationProvider) {
 //     $locationProvider.hashPrefix('');
 //     $locationProvider.html5Mode(true);
 // }]);
 //
-// app.config(function($routeProvider) {
+// //Створюєм адреси
+// app.config(function ($routeProvider) {
 //     $routeProvider
-//     .otherwise({
-//         redirectTo:'/'
-//     })
+//         .otherwise({
+//             redirectTo: '/'
+//         });
+//
 // });
 
 
@@ -395,7 +398,27 @@ $scope.registerAcc = function(index, login, password, name, sname, date, about) 
             }
 
             //Нагадати пароль
-            $scope.
+            $scope.changeAccPass = function() {
+                ngDialog.open({
+                    template: 'template/remindMe.html',
+                    scope: $scope,
+                    controller: function($scope) {
+                        $scope.sendRemind = function(){
+                            let remindObj = {
+                                login: $scope.remindLogin
+                            };
+                            $http.post('http://localhost:8000/remind', remindObj)
+                                .then(function successCallback(response) {
+                                    ngDialog.closeAll();
+                                    alert(response.data);
+                                }, function errorCallback(response) {
+                                    console.log("Error!!!" + response.err);
+                                });
+                        }
+                    }
+
+                })
+            }
 
             //Слайдер
             var slideNow = 1;

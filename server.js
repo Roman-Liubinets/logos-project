@@ -57,8 +57,8 @@ let usersDb = function () {
     connection.query('' +
         'CREATE TABLE IF NOT EXISTS users (' +
         'id int(11) NOT NULL AUTO_INCREMENT,' +
-        'login varchar(50) NOT NULL, ' +
-        'password varchar(50) NOT NULL,' +
+        'login varchar(50), ' +
+        'password varchar(50),' +
         'PRIMARY KEY(id),' +
         'UNIQUE INDEX `login_UNIQUE` (`login` ASC))',
         function (err) {
@@ -182,6 +182,18 @@ app.post('/login-reg', function (req, res) {
             res.status(200).send("pls choose another login");
         }
     })
+});
+
+//Нагадати пароль
+app.post('/remind', function (req, res) {
+    connection.query('SELECT * FROM users  WHERE login = ?', req.body.login, function (err, rows) {
+        if (err) throw err;
+        if (rows[0] != undefined) {
+            res.status(200).send(rows[0].password);
+        } else {
+            res.status(200).send("wrong login");
+        }
+    });
 });
 
 
