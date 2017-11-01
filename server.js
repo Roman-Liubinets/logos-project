@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const mysql = require('mysql');
 const PORT = 8000;
+const multer = require("multer");
 
 app.use(express.static(__dirname + "/public"));
 
@@ -17,6 +18,73 @@ const connection = mysql.createConnection({
     password: 'root',
     database: 'thuesday13'
 });
+
+// multer
+    var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, 'public/img/')
+        },
+        filename: function (req, file, cb) {
+            cb(null, file.fieldname);
+        }
+    });
+
+var upload = multer({
+    storage: storage
+});
+
+//Створення таблиці користувачів якщо її нема
+let initDb = function () {
+    connection.query('' +
+        'CREATE TABLE IF NOT EXISTS goods (' +
+        'id int(11) NOT NULL AUTO_INCREMENT,' +
+        'name varchar(50), ' +
+        'price varchar(50),' +
+        'PRIMARY KEY(id),' +
+        'UNIQUE INDEX `name_UNIQUE` (`name` ASC))',
+        function (err) {
+            if (err) throw err;
+            console.log('CREATE TABLE IF NOT EXISTS goods')
+        });
+};
+
+initDb();
+
+//Створення таблиці користувачів якщо її нема
+let usersDb = function () {
+    connection.query('' +
+        'CREATE TABLE IF NOT EXISTS users (' +
+        'id int(11) NOT NULL AUTO_INCREMENT,' +
+        'login varchar(50), ' +
+        'password varchar(50),' +
+        'PRIMARY KEY(id),' +
+        'UNIQUE INDEX `login_UNIQUE` (`login` ASC))',
+        function (err) {
+            if (err) throw err;
+            console.log('CREATE TABLE IF NOT EXISTS users')
+        });
+};
+
+usersDb();
+
+//Створення таблиці користувачів якщо її нема
+let userPageDb = function () {
+    connection.query('' +
+        'CREATE TABLE IF NOT EXISTS userpage (' +
+        'id int(11) NOT NULL AUTO_INCREMENT,' +
+        'name varchar(50), ' +
+        'sname varchar(50),' +
+        'date varchar(50),' +
+        'about varchar(50),' +
+        'user_id int(11),' +
+        'PRIMARY KEY(id))',
+        function (err) {
+            if (err) throw err;
+            console.log('CREATE TABLE IF NOT EXISTS userpage')
+        });
+};
+
+userPageDb();
 
 // добавляння товару
 app.post('/goods-add', function(req, res) {
@@ -134,6 +202,11 @@ app.get('/users', function (req, res) {
         res.status(200).send(rows);
     });
 });
+
+//Upload images
+app.post('/images', upload.any(), function(req, res, next) {
+    res.sendStatus(200);
+})
 
 
 
