@@ -62,14 +62,18 @@
         </div>
     </div>
     <div ng-show="goods" ng-cloak>
-        <div class="goodsMenu">
+        <div class="goodsMenu" ng-show="goodsMenuNg">
             <label for="goods" class="goodsCSS">Товар:</label>
             <input type="text" id="goods" placeholder="Ім'я товару" ng-model="setGoodsName" />
             <label for="price" class="goodsCSS">Ціна:</label>
             <input type="text" id="price" placeholder="введіть ціну" ng-model="setGoodsPrice" />
             <input type="button" class="buttonForAdd" value="ДОБАВИТИ" ng-click="addGoods(setGoodsName, setGoodsPrice)" />
+            <div class="serchGoodsblock">
+                <label for="serchGoodsId" class="goodsCSS" style="margin-top: 10px;">Пошук:</label>
+                <input type="text" placeholder="пошук товару" ng-model="filter1" class="serchGoods" id="serchGoodsId">
+            </div>
         </div>
-        <div class="content-catalog-item" ng-repeat="a in items track by $index">
+        <div class="content-catalog-item" ng-repeat="a in items | filter : filter1">
             <!-- <div ng-repeat="a in imageTest track by $index">
                 <img src="{{a.src}}" alt="" width="100px">
             </div> -->
@@ -98,7 +102,7 @@
                 <div class="users-login-navigation">
                     <input class="login-class text-field" type="text" ng-model="login" name="login" placeholder="Введіть логін" required>
                     <span style="color: red" ng-show="myForm.login.$touched && myForm.login.$invalid"><span ng-show="myForm.login.$error.required">Пусте поле</span></span>
-<span style="color: red">{{user}}</span><br /><br />
+                    <span style="color: red">{{user}}</span>
                     <input class="password-class text-field" type="password" ng-model="password" placeholder="Введіть пароль" required>
                     <div class="field-container clearfix">
                         <div class="checkbox">
@@ -115,15 +119,15 @@
             </form>
         </div>
         <div class="profilePage" ng-show="ProfileStatus">
-    <div class="profile-page-container">
-        <h1>PROFILE PAGE</h1>
-        <p>Your name: {{nameUserProfile}}</p>
-        <p>Your surname: {{snameUserProfile}}</p>
-        <p>Your date b. : {{dateUserProfile}}</p>
-        <p>About your self : {{aboutUserProfile}}</p>
-        <button type="submit" class="btn btn1 btn-success btn-block" ng-click="logOut()">Вихід</button>
-    </div>
-</div>
+            <div class="profile-page-container">
+                <h1>PROFILE PAGE</h1>
+                <p>Your name: {{nameUserProfile}}</p>
+                <p>Your surname: {{snameUserProfile}}</p>
+                <p>Your date b. : {{dateUserProfile}}</p>
+                <p>About your self : {{aboutUserProfile}}</p>
+                <button type="submit" class="btn btn1 btn-success btn-block" ng-click="logOut()">Вихід</button>
+            </div>
+        </div>
     </div>
     </div>
 </main>

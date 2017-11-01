@@ -162,28 +162,26 @@ app.post('/login-auth', function (req, res) {
 
 //Реєстрація
 app.post('/login-reg', function (req, res) {
-    connection.query('SELECT * FROM users  WHERE login = ?', req.body.login, function (err, rows) {
+	connection.query('SELECT * FROM users  WHERE login = ?', req.body.login, function (err, rows) {
         if (err) throw err;
-        if (rows[0] != undefined) {
-            res.status(200).send("Choose another login!");
-        } else {
-            connection.query('INSERT INTO users SET ?', req.body,
+        if (rows[0] == undefined) {
+            connection.query('INSERT INTO users SET login = ? , password = ?', [req.body.login, req.body.password],
                 function (err, result) {
                     if (err) throw err;
                     console.log('user added to database with id: ' + result.insertId);
-
-					connection.query('INSERT INTO userpage SET name = ?, sname = ?, date = ?, about = ?', [req.body.name, req.body.sname, req.body.date, req.body.about],
-		                function (err, result) {
-		                    if (err) throw err;
-		                    console.log('user added to database with id: ' + result.insertId);
-		                }
-					);
+                    connection.query('INSERT INTO userpage SET name = ? , sname = ? , date = ? , about = ? , users_id = ?', [req.body.name, req.body.sname, req.body.date, req.body.about, result.insertId],
+                        function (err, result2) {
+                            if (err) throw err;
+                            console.log('userpage added to database with id: ' + result2.insertId);
+                            res.status(200).send(req.body.login + " created");
+                        }
+                    );
                 }
-
             );
-            res.status(200).send(req.body.login + " registered!");
+        } else {
+            res.status(200).send("pls choose another login");
         }
-    });
+    })
 });
 
 

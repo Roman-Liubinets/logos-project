@@ -141,6 +141,11 @@ app.directive("headerBlock", function() {
                         $scope.home = false;
                         $scope.blog = false;
                         $scope.goods = true;
+                        if($scope.ProfileStatus == true) {
+                        $scope.goodsMenuNg = true;
+                    } else {
+                        $scope.goodsMenuNg = false;
+                    }
                         $scope.bodyLoginBlock = false;
                     }
                 }
@@ -367,22 +372,13 @@ $scope.registerAcc = function(index, login, password, name, sname, date, about) 
                             date: $scope.regdate,
                             about: $scope.regabout
                         };
-
                         $http.post('http://localhost:8000/login-reg', loginObj)
                             .then(function successCallback(response) {
-                                $http.get('http://localhost:8000/users')
-                                    // $http.get('http://localhost:8000/userpage')
-                                    .then(function successCallback(response) {
-                                        $scope.user = response.data;
-                                    }, function errorCallback(response) {
-                                        console.log("Error!!!" + response.err);
-                                    });
-
-
+                                ngDialog.closeAll();
+                                alert(response.data);
                             }, function errorCallback(response) {
                                 console.log("Error!!!" + response.err);
                             });
-
 
 
                             };

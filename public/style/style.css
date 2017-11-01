@@ -657,3 +657,8 @@ background-color: #a06600;
     background-position: 0px 0px;
     background-size: auto;
 }
+
+.serchGoods {
+    width: 115px;
+    display: inline-block;
+}
