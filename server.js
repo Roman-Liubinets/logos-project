@@ -99,10 +99,19 @@ app.post('/goods-add', function(req, res) {
 app.get('/goods', function (req, res) {
     connection.query('SELECT * FROM goods', function (err, rows) {
         if (err) throw err;
-        console.log('get all itemses, length: ' + rows.length);
+        console.log('get all goodses, length: ' + rows.length);
         res.status(200).send(rows);
     });
 });
+
+//отримання зображення
+// app.get('/test2', function (req, res) {
+//     connection.query('SELECT * FROM test2', function (err, rows) {
+//         if (err) throw err;
+//         console.log('get all test2, length: ' + rows.length);
+//         res.status(200).send(rows);
+//     });
+// });
 
 //Змінити товар
 app.post('/goods-change', function (req, res) {

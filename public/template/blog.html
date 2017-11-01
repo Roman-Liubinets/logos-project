@@ -70,7 +70,10 @@
             <input type="button" class="buttonForAdd" value="ДОБАВИТИ" ng-click="addGoods(setGoodsName, setGoodsPrice)" />
         </div>
         <div class="content-catalog-item" ng-repeat="a in items track by $index">
-            <a><img src="img/content-catalog-item-1.jpg" width="100%" height="170" alt=""></a>
+            <!-- <div ng-repeat="a in imageTest track by $index">
+                <img src="{{a.src}}" alt="" width="100px">
+            </div> -->
+            <a><img src="{{a.src}}" width="100%" height="170" alt=""></a>
             <div class="content-catalog-name">{{a.name}}</div>
             <div class="content-catalog-price-container clearfix">
                 <div class="catalog-item-price">

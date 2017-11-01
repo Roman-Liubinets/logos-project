@@ -32,17 +32,44 @@ app.controller('myCtrl', function($scope, $http, ngDialog) {
             console.log("Error!!!" + response.err);
         });
 
+       var a = '';
+
+    //     $http.get('http://localhost:8000/test2')
+    //         .then(function successCallback(response) {
+    //             $scope.imageTest = response.data;
+    // //        a = $scope.imageTest[1].src.split('/')[1];
+    //         }, function errorCallback(response) {
+    //             console.log("Error!!!" + response.err);
+    //         });
+
 
     //Змінити товар
-    $scope.changeGoods = function(index, name, price) {
+    $scope.changeGoods = function (index, name, price) {
         ngDialog.open({
                 template: '/template/changeItem.html',
                 scope: $scope,
-                controller: function($scope) {
+                controller: function ($scope) {
                     $scope.indexEditedItem = index;
                     $scope.editNameItem = name;
                     $scope.editPpriceItem = price;
-                    $scope.edititem = function() {
+                    $scope.edititem = function () {
+                        var fd = new FormData();
+                        fd.append("1", $scope.myFile);
+                        $http.post('http://localhost:8000/images', fd, {
+                                transformRequest: angular.identity,
+                                headers: {
+                                    'Content-Type': undefined
+                                }
+                            })
+                            .then(function successCallback() {
+                                console.log("Uploaded!");
+                            }, function errorCallback(response) {
+                                console.log("Error!!!" + response.err);
+                            })
+
+
+
+
                         let goodsObj = {
                             name: $scope.editNameItem,
                             price: $scope.editPpriceItem,
@@ -58,7 +85,7 @@ app.controller('myCtrl', function($scope, $http, ngDialog) {
                     };
                 }
             })
-            .closePromise.then(function(res) {
+            .closePromise.then(function (res) {
                 $http.get('http://localhost:8000/goods')
                     .then(function successCallback(response) {
                         $scope.items = response.data;
@@ -219,12 +246,13 @@ app.directive("bodyBlock", function() {
                     $scope.enterText = "";
                     console.log($scope.messages);
             }
-
+            
             // добавляння товару
             $scope.addGoods = function() {
                 let goodsObj = {
                     name: $scope.setGoodsName,
-                    price: $scope.setGoodsPrice
+                    price: $scope.setGoodsPrice,
+
                 };
 
                 $http.post('http://localhost:8000/goods-add', goodsObj)
@@ -481,3 +509,19 @@ app.directive("footerBlock", function() {
         }
     }
 })
+
+//Директива з унікальним атрибутом - для передачі файла
+app.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            element.bind('change', function () {
+                scope.$apply(function () {
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
