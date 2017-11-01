@@ -38,8 +38,10 @@ let initDb = function () {
     connection.query('' +
         'CREATE TABLE IF NOT EXISTS goods (' +
         'id int(11) NOT NULL AUTO_INCREMENT,' +
-        'name varchar(50), ' +
-        'price varchar(50),' +
+        'name varchar(50) NOT NULL, ' +
+        'price varchar(50) NOT NULL,' +
+		'img varchar(50),' +
+		'src varchar(50),' +
         'PRIMARY KEY(id),' +
         'UNIQUE INDEX `name_UNIQUE` (`name` ASC))',
         function (err) {
@@ -55,8 +57,8 @@ let usersDb = function () {
     connection.query('' +
         'CREATE TABLE IF NOT EXISTS users (' +
         'id int(11) NOT NULL AUTO_INCREMENT,' +
-        'login varchar(50), ' +
-        'password varchar(50),' +
+        'login varchar(50) NOT NULL, ' +
+        'password varchar(50) NOT NULL,' +
         'PRIMARY KEY(id),' +
         'UNIQUE INDEX `login_UNIQUE` (`login` ASC))',
         function (err) {

@@ -98,6 +98,7 @@
                 <div class="users-login-navigation">
                     <input class="login-class text-field" type="text" ng-model="login" name="login" placeholder="Введіть логін" required>
                     <span style="color: red" ng-show="myForm.login.$touched && myForm.login.$invalid"><span ng-show="myForm.login.$error.required">Пусте поле</span></span>
+<span style="color: red">{{user}}</span><br /><br />
                     <input class="password-class text-field" type="password" ng-model="password" placeholder="Введіть пароль" required>
                     <div class="field-container clearfix">
                         <div class="checkbox">

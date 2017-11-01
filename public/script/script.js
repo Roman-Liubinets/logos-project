@@ -153,7 +153,11 @@ app.directive("headerBlock", function() {
                 $scope.blog = false;
                 $scope.goods = false;
                 $scope.bodyLoginBlock = true;
-                $scope.enterLogin = true;
+                if($scope.ProfileStatus == true) {
+                    $scope.enterLogin = false;
+                } else {
+                    $scope.enterLogin = true;
+                }
             }
 
 
@@ -246,7 +250,7 @@ app.directive("bodyBlock", function() {
                     $scope.enterText = "";
                     console.log($scope.messages);
             }
-            
+
             // добавляння товару
             $scope.addGoods = function() {
                 let goodsObj = {
