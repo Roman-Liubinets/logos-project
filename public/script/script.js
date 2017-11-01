@@ -394,6 +394,9 @@ $scope.registerAcc = function(index, login, password, name, sname, date, about) 
                 });
             }
 
+            //Нагадати пароль
+            $scope.
+
             //Слайдер
             var slideNow = 1;
             var translateWidth = 0;
